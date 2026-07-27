@@ -1,0 +1,14 @@
+/*
+ * Vazirmatn for the Filament admin panel.
+ *
+ * Filament ships its own compiled CSS and does not go through the site's Vite
+ * bundle, so it needs the face declared separately. Panel::font() points here.
+ * Self-hosted for the same reason as the public site: no CDN dependency.
+ */
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('/fonts/vazirmatn-var.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}

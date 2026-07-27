@@ -1,0 +1,449 @@
+@import 'tailwindcss';
+
+/* Font Awesome, self-hosted. Core + solid only — brand glyphs are inline SVG,
+   which saves the 113 KB fa-brands webfont for the handful of social icons. */
+@import '@fortawesome/fontawesome-free/css/fontawesome.min.css';
+@import '@fortawesome/fontawesome-free/css/solid.min.css';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../views';
+@source '../../app';
+
+/* The site is light-only. `dark:` is redefined rather than left alone because
+   Tailwind's stock variant follows prefers-color-scheme — an accidental `dark:`
+   utility would otherwise repaint half a page for visitors whose OS is dark.
+   Bound to a class that is never applied, it is inert by construction. */
+@custom-variant dark (&:where(.never-dark));
+
+/* ---------------------------------------------------------------------------
+   Vazirmatn — one variable file covers weights 100..900 (109 KB).
+--------------------------------------------------------------------------- */
+@font-face {
+  font-family: 'Vazirmatn';
+  src: url('../fonts/vazirmatn-var.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------------------------------------------------------------------------
+   Brand ramps.
+
+   The palette is built around what the building actually is: a judo hall. Blue
+   is the colour of the away judogi and of the IJF mat, so it carries the brand;
+   ochre is the straw of the tatami and carries the highlights. Red and green are
+   deliberately *not* brand colours — the hall board needs them free to mean
+   «رزرو شده» and «آزاد», and a red brand would drown that signal.
+
+   Tailwind v4 retuned its palette for wider gamut (blue-700 is #1447e6, amber-600
+   is #e17100), so neither matches the spec. These ramps keep Tailwind's
+   (well-tuned) lightness/chroma *shape* but are retargeted so that cobalt-600 is
+   exactly #1D4ED8 and ochre-500 is exactly #D97706.
+   Regenerate with scripts/brand-scale.mjs.
+
+   Neutrals come from Tailwind's warm `stone` family: against a cool blue brand a
+   warm grey keeps the pages feeling like a room rather than a dashboard.
+--------------------------------------------------------------------------- */
+@theme {
+  --color-cobalt-50: oklch(96.2% 0.012 256.099);
+  --color-cobalt-100: oklch(91.5% 0.028 257.08);
+  --color-cobalt-200: oklch(85.7% 0.052 255.623);
+  --color-cobalt-300: oklch(77.6% 0.093 253.308);
+  --color-cobalt-400: oklch(66.6% 0.146 256.119);
+  --color-cobalt-500: oklch(57.3% 0.19 261.31);
+  --color-cobalt-600: oklch(48.8% 0.217 264.376); /* #1D4ED8 — brand */
+  --color-cobalt-700: oklch(43.8% 0.215 265.871);
+  --color-cobalt-800: oklch(38.3% 0.176 267.133);
+  --color-cobalt-900: oklch(34.6% 0.129 267.017);
+  --color-cobalt-950: oklch(25.7% 0.081 269.43);
+
+  --color-ochre-50: oklch(97.0% 0.018 83.515);
+  --color-ochre-100: oklch(92.8% 0.049 83.855);
+  --color-ochre-200: oklch(87.2% 0.1 83.984);
+  --color-ochre-300: oklch(81.0% 0.142 79.843);
+  --color-ochre-400: oklch(74.2% 0.158 72.667);
+  --color-ochre-500: oklch(66.6% 0.157 58.318); /* #D97706 — brand */
+  --color-ochre-600: oklch(58.0% 0.15 46.556);
+  --color-ochre-700: oklch(48.6% 0.136 37.236);
+  --color-ochre-800: oklch(42.1% 0.115 34.439);
+  --color-ochre-900: oklch(38.0% 0.094 34.142);
+  --color-ochre-950: oklch(26.2% 0.064 33.873);
+}
+
+:root {
+  color-scheme: light;
+
+  --c-canvas: var(--color-stone-50);
+  --c-surface: #fff;
+  --c-surface-muted: var(--color-stone-100);
+  --c-surface-sunken: var(--color-stone-200);
+
+  --c-line: var(--color-stone-200);
+  --c-line-strong: var(--color-stone-300);
+
+  --c-heading: var(--color-stone-900);
+  --c-copy: var(--color-stone-700);
+  --c-muted: var(--color-stone-500);
+
+  --c-brand: var(--color-cobalt-600);
+  --c-brand-hover: var(--color-cobalt-700);
+  --c-brand-soft: var(--color-cobalt-50);
+  --c-brand-text: var(--color-cobalt-700); /* body-copy safe on canvas */
+  --c-on-brand: #fff;
+
+  --c-accent: var(--color-ochre-500);
+  --c-accent-hover: var(--color-ochre-600);
+  --c-accent-soft: var(--color-ochre-50);
+  --c-accent-text: var(--color-ochre-700); /* body-copy safe on canvas */
+  --c-on-accent: var(--color-stone-900);
+
+  /* Deep navy for the inverted bands — hero scrim, CTA panel, footer, top bar.
+     Tinting the dark towards the brand rather than to neutral black keeps the
+     inverted sections part of the same palette instead of a second one. */
+  --c-ink: var(--color-cobalt-950);
+  --c-ink-soft: var(--color-cobalt-900);
+  --c-on-ink: var(--color-stone-100);
+  --c-on-ink-muted: var(--color-cobalt-200);
+
+  /* Hall-board semantics. These are the only three states a slot can be in, and
+     they never double as brand colours, so a colour here always means status. */
+  --c-open: var(--color-emerald-600);
+  --c-open-soft: var(--color-emerald-50);
+  --c-open-text: var(--color-emerald-700);
+
+  --c-taken: var(--color-stone-400);
+  --c-taken-soft: var(--color-stone-100);
+  --c-taken-text: var(--color-stone-600);
+
+  /* Errors get plain red. It reads as a warning precisely because nothing else
+     on the site is red any more. */
+  --c-danger: var(--color-red-600);
+  --c-danger-soft: var(--color-red-50);
+  --c-danger-text: var(--color-red-700);
+
+  /* One ring for the whole site. Ochre is the only hue that clears WCAG 1.4.11's
+     3:1 against *both* the light canvas and the deep navy bands, so focus never
+     needs a second, inverted treatment. */
+  --c-focus: var(--color-ochre-500);
+
+  --c-glass: rgb(255 255 255 / 0.78);
+  --c-glass-line: rgb(255 255 255 / 0.6);
+  --c-shadow: 25 30% 14%;
+}
+
+/* Expose the semantic layer as real Tailwind utilities, so markup names a role
+   («bg-surface», «text-open-text») and never a raw ramp step. */
+@theme inline {
+  --font-sans: 'Vazirmatn', ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+
+  --color-canvas: var(--c-canvas);
+  --color-surface: var(--c-surface);
+  --color-surface-muted: var(--c-surface-muted);
+  --color-surface-sunken: var(--c-surface-sunken);
+
+  --color-line: var(--c-line);
+  --color-line-strong: var(--c-line-strong);
+
+  --color-heading: var(--c-heading);
+  --color-copy: var(--c-copy);
+  --color-muted: var(--c-muted);
+
+  --color-brand: var(--c-brand);
+  --color-brand-hover: var(--c-brand-hover);
+  --color-brand-soft: var(--c-brand-soft);
+  --color-brand-text: var(--c-brand-text);
+  --color-on-brand: var(--c-on-brand);
+
+  --color-accent: var(--c-accent);
+  --color-accent-hover: var(--c-accent-hover);
+  --color-accent-soft: var(--c-accent-soft);
+  --color-accent-text: var(--c-accent-text);
+  --color-on-accent: var(--c-on-accent);
+
+  --color-ink: var(--c-ink);
+  --color-ink-soft: var(--c-ink-soft);
+  --color-on-ink: var(--c-on-ink);
+  --color-on-ink-muted: var(--c-on-ink-muted);
+
+  --color-open: var(--c-open);
+  --color-open-soft: var(--c-open-soft);
+  --color-open-text: var(--c-open-text);
+
+  --color-taken: var(--c-taken);
+  --color-taken-soft: var(--c-taken-soft);
+  --color-taken-text: var(--c-taken-text);
+
+  --color-danger: var(--c-danger);
+  --color-danger-soft: var(--c-danger-soft);
+  --color-danger-text: var(--c-danger-text);
+
+  --color-focus: var(--c-focus);
+
+  --radius-card: 1rem;
+  --radius-panel: 1.5rem;
+
+  --shadow-soft: 0 1px 2px hsl(var(--c-shadow) / 0.06), 0 4px 12px hsl(var(--c-shadow) / 0.05);
+  --shadow-lift: 0 2px 4px hsl(var(--c-shadow) / 0.06), 0 12px 28px hsl(var(--c-shadow) / 0.1);
+  --shadow-pop: 0 8px 20px hsl(var(--c-shadow) / 0.12), 0 24px 56px hsl(var(--c-shadow) / 0.16);
+
+  --animate-fade-up: fade-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-fade-in: fade-in 0.4s ease-out both;
+  --animate-scale-in: scale-in 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-shimmer: shimmer 1.6s linear infinite;
+  --animate-marquee: marquee 38s linear infinite;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(1.25rem); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(50%); }
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+--------------------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Sticky header is 4.5rem; keep anchored headings clear of it. */
+    scroll-padding-top: 6rem;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-copy);
+    font-family: var(--font-sans);
+    /* Persian needs a roomier leading than Latin to stay readable. */
+    line-height: 1.85;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-heading);
+    font-weight: 700;
+    line-height: 1.5;
+    /* Persian script must never be letter-spaced — it breaks the joining. */
+    letter-spacing: 0;
+    text-wrap: balance;
+  }
+
+  p { text-wrap: pretty; }
+
+  /* Latin runs (URLs, code, phone numbers) keep their own direction inside RTL. */
+  :is(.ltr, code, kbd, samp, pre) {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
+  ::selection {
+    background-color: var(--color-brand);
+    color: var(--color-on-brand);
+  }
+
+  /* Two-part indicator: an ochre outline sitting on a white keyline. Ochre alone
+     drops to 2.1:1 on a brand-filled surface, so the keyline carries the ring
+     there and the ochre carries it everywhere else. No radius is forced — every
+     current browser bends `outline` around the element's own border-radius, and
+     overriding it would flatten the pill and circle buttons while focused. */
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--color-surface);
+  }
+
+  /* Only pointer interactions lose the ring; keyboard users keep it. */
+  :focus:not(:focus-visible) { outline: none; }
+
+  hr { border-color: var(--color-line); }
+
+  img, video { max-width: 100%; height: auto; }
+
+  ::-webkit-scrollbar { width: 0.7rem; height: 0.7rem; }
+  ::-webkit-scrollbar-track { background: var(--color-surface-muted); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line-strong);
+    border-radius: 999px;
+    border: 2px solid var(--color-surface-muted);
+  }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-muted); }
+
+  html { scrollbar-color: var(--color-line-strong) var(--color-surface-muted); }
+}
+
+/* ---------------------------------------------------------------------------
+   Utilities
+--------------------------------------------------------------------------- */
+@utility glass {
+  background-color: var(--c-glass);
+  border-color: var(--c-glass-line);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+}
+
+@utility surface-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+}
+
+/* The woven grain of a tatami, drawn with two crossed gradients so it costs no
+   request. Meant for an aria-hidden overlay: it paints in `currentColor`, so the
+   element carries the colour and the opacity, never the content above it. */
+@utility tatami-weave {
+  background-image:
+    repeating-linear-gradient(0deg, currentColor 0 1px, transparent 1px var(--tatami-gap, 1rem)),
+    repeating-linear-gradient(90deg, currentColor 0 1px, transparent 1px var(--tatami-gap, 1rem));
+}
+
+/* Masonry via CSS columns — no JS, and it reflows naturally on resize. */
+@utility masonry-* {
+  column-count: --value(integer);
+  column-gap: 1.25rem;
+}
+
+@utility masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1.25rem;
+}
+
+/* Typography for admin-authored HTML (news bodies, event descriptions).
+   Scoped tightly so it never leaks into component markup. */
+@utility prose-article {
+  color: var(--color-copy);
+  line-height: 2;
+
+  & > * + * {
+    margin-block-start: 1.25em;
+  }
+
+  & h2,
+  & h3,
+  & h4 {
+    color: var(--color-heading);
+    font-weight: 700;
+    margin-block-start: 2em;
+    margin-block-end: 0.75em;
+  }
+
+  & h2 { font-size: 1.5rem; }
+  & h3 { font-size: 1.25rem; }
+  & h4 { font-size: 1.075rem; }
+
+  & a {
+    color: var(--color-brand-text);
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+
+  & a:hover { text-decoration-thickness: 2px; }
+
+  & strong { color: var(--color-heading); font-weight: 700; }
+
+  & ul,
+  & ol {
+    padding-inline-start: 1.5rem;
+  }
+
+  & ul { list-style: disc; }
+  & ol { list-style: decimal; }
+
+  & li::marker { color: var(--color-brand); }
+  & li + li { margin-block-start: 0.5em; }
+
+  & blockquote {
+    border-inline-start: 3px solid var(--color-brand);
+    background-color: var(--color-surface-muted);
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+    color: var(--color-heading);
+  }
+
+  & img {
+    border-radius: var(--radius-card);
+  }
+
+  & table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  & :is(th, td) {
+    border: 1px solid var(--color-line);
+    padding: 0.625rem 0.875rem;
+    text-align: start;
+  }
+
+  & th {
+    background-color: var(--color-surface-muted);
+    color: var(--color-heading);
+    font-weight: 600;
+  }
+}
+
+@utility skeleton {
+  background-image: linear-gradient(
+    90deg,
+    var(--color-surface-muted) 25%,
+    color-mix(in oklab, var(--color-surface-muted) 60%, var(--color-surface)) 50%,
+    var(--color-surface-muted) 75%
+  );
+  background-size: 200% 100%;
+  animation: var(--animate-shimmer);
+}
+
+/* Scroll-reveal targets start hidden and land when .is-visible is applied.
+   The no-JS guard below keeps content visible if the script never runs. */
+@utility reveal {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Browsers without backdrop-filter get a solid panel rather than unreadable text. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass { background-color: var(--color-surface); }
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+html:not(.js) .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal { opacity: 1; transform: none; }
+}
