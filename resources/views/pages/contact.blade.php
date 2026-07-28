@@ -64,7 +64,10 @@
                         <x-ui.field name="email" label="رایانامه" type="email" dir="ltr"
                                     placeholder="you@example.com" autocomplete="email" />
 
+                        {{-- The hall board links here with the slot already named in
+                             ?subject=…, so a rental request arrives identifiable. --}}
                         <x-ui.field name="subject" label="موضوع" required
+                                    :value="request('subject')"
                                     placeholder="مثلاً شرایط ثبت‌نام ردهٔ کودکان" />
 
                         <x-ui.field name="message" label="متن پیام" type="textarea" required :rows="6"

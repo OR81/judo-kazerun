@@ -2,7 +2,7 @@
 <div data-search inert
      class="pointer-events-none fixed inset-0 z-[65] opacity-0 transition-opacity duration-200">
 
-    <div data-search-close class="absolute inset-0 bg-gray-950/70 backdrop-blur-sm"></div>
+    <div data-search-close class="absolute inset-0 bg-ink/70 backdrop-blur-sm"></div>
 
     <div role="dialog" aria-modal="true" aria-labelledby="search-heading"
          class="relative mx-auto mt-[12vh] w-[min(42rem,92vw)]">

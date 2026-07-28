@@ -10,9 +10,12 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             // Three portals share one users table, separated by role.
-            $table->string('role', 20)->default('athlete')->after('email')->index();
+            $table->string('role', 20)->default('athlete')->after('name')->index();
 
-            $table->string('mobile', 11)->nullable()->unique()->after('role');
+            // The whole identity of an account. Normalised to 09xxxxxxxxx on the
+            // model, so the sign-in lookup is a plain equality match.
+            $table->string('mobile', 11)->unique()->after('role');
+
             $table->string('national_code', 10)->nullable()->unique()->after('mobile');
             $table->date('birth_date')->nullable()->after('national_code');
             $table->string('gender', 10)->nullable()->after('birth_date');
@@ -20,9 +23,6 @@ return new class extends Migration
             $table->string('city')->nullable()->after('avatar');
             $table->boolean('is_active')->default(true)->after('city');
             $table->timestamp('last_login_at')->nullable()->after('is_active');
-
-            // Email is optional here — most members sign in with a mobile number.
-            $table->string('email')->nullable()->change();
         });
     }
 

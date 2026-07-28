@@ -129,7 +129,7 @@
         </div>
 
         <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <x-ui.button variant="dark" icon="fa-print" onclick="window.print()">چاپ رسید</x-ui.button>
+            <x-ui.button variant="ink" icon="fa-print" onclick="window.print()">چاپ رسید</x-ui.button>
             <x-ui.button :href="route('schedule')" variant="outline" icon="fa-calendar-days">برنامهٔ تمرینی</x-ui.button>
             <x-ui.button :href="route('home')" variant="ghost" icon="fa-house">بازگشت به خانه</x-ui.button>
         </div>

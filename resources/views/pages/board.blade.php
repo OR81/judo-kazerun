@@ -24,7 +24,7 @@
                 @foreach ($officers as $member)
                     <article class="reveal surface-card overflow-hidden text-center transition hover:shadow-lift"
                              data-reveal-delay="{{ $loop->index * 90 }}">
-                        <div class="bg-gradient-to-b from-gray-900 to-gray-800 px-6 pt-8 pb-6">
+                        <div class="bg-gradient-to-b from-ink to-ink-soft px-6 pt-8 pb-6">
                             <x-ui.avatar :src="$member->photo_url" :name="$member->name" size="xl" ring class="mx-auto" />
 
                             <h3 class="mt-4 text-lg font-bold text-white">{{ $member->name }}</h3>

@@ -22,11 +22,11 @@
 
             <aside class="lg:col-span-4">
                 <div class="surface-card sticky top-24 overflow-hidden">
-                    <div class="bg-gradient-to-b from-gray-900 to-gray-800 px-6 pt-8 pb-6 text-center">
+                    <div class="bg-gradient-to-b from-ink to-ink-soft px-6 pt-8 pb-6 text-center">
                         <x-ui.avatar :src="$athlete->photo_url" :name="$athlete->name" size="xl" ring class="mx-auto" />
 
                         <h2 class="mt-4 text-xl font-bold text-white">{{ $athlete->name }}</h2>
-                        <p class="mt-1 text-sm text-gray-300">{{ $athlete->weight_class }}</p>
+                        <p class="mt-1 text-sm text-on-ink">{{ $athlete->weight_class }}</p>
 
                         @if ($athlete->is_national_team)
                             <p class="mt-3">

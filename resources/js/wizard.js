@@ -70,7 +70,7 @@ export function initWizard() {
 
     function showError(field, message) {
         field.setAttribute('aria-invalid', 'true');
-        field.classList.add('border-crimson-600');
+        field.classList.add('border-danger');
 
         const holder = field.closest('[data-field]');
         const slot = holder?.querySelector('[data-field-error]');
@@ -82,7 +82,7 @@ export function initWizard() {
 
     function clearError(field) {
         field.removeAttribute('aria-invalid');
-        field.classList.remove('border-crimson-600');
+        field.classList.remove('border-danger');
 
         const slot = field.closest('[data-field]')?.querySelector('[data-field-error]');
         if (slot) {

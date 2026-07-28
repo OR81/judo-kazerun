@@ -14,12 +14,12 @@
     <div class="mx-auto max-w-5xl px-4 py-14 sm:px-6">
 
         @if ($errors->any())
-            <div role="alert" class="surface-card mb-8 border-crimson-600/40 bg-crimson-50 p-5">
-                <h2 class="flex items-center gap-2 font-bold text-crimson-800">
+            <div role="alert" class="surface-card mb-8 border-danger/40 bg-danger-soft p-5">
+                <h2 class="flex items-center gap-2 font-bold text-danger-text">
                     <i class="fa-solid fa-circle-exclamation" aria-hidden="true"></i>
                     لطفاً موارد زیر را اصلاح کنید
                 </h2>
-                <ul class="mt-3 list-disc space-y-1 ps-5 text-sm text-crimson-700">
+                <ul class="mt-3 list-disc space-y-1 ps-5 text-sm text-danger-text">
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach

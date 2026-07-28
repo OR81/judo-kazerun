@@ -11,9 +11,9 @@
     <div class="mx-auto max-w-lg px-4 py-16 sm:px-6">
 
         <div role="note"
-             class="mb-6 flex items-start gap-3 rounded-card border border-gold-500/40 bg-gold-50 p-4">
-            <i class="fa-solid fa-flask mt-0.5 text-gold-700" aria-hidden="true"></i>
-            <p class="text-sm leading-relaxed text-gold-900">
+             class="mb-6 flex items-start gap-3 rounded-card border border-accent/40 bg-accent-soft p-4">
+            <i class="fa-solid fa-flask mt-0.5 text-accent-text" aria-hidden="true"></i>
+            <p class="text-sm leading-relaxed text-accent-text">
                 این یک <strong>درگاه آزمایشی</strong> است و هیچ تراکنش واقعی انجام نمی‌شود.
                 برای اتصال به درگاه بانکی، مقدار <code class="ltr">PAYMENT_GATEWAY</code> را در فایل
                 <code class="ltr">.env</code> روی <code class="ltr">zarinpal</code> بگذارید.
@@ -22,8 +22,8 @@
 
         <div class="surface-card overflow-hidden">
             {{-- Mimics a bank's payment header. --}}
-            <div class="bg-gray-900 px-6 py-5 text-center">
-                <p class="text-xs text-gray-400">درگاه پرداخت اینترنتی</p>
+            <div class="bg-ink px-6 py-5 text-center">
+                <p class="text-xs text-on-ink-muted">درگاه پرداخت اینترنتی</p>
                 <p class="mt-1 font-bold text-white">{{ setting('site_title') }}</p>
             </div>
 

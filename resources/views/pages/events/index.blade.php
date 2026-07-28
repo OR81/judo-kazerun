@@ -108,10 +108,10 @@
                     {{-- Next event countdown --}}
                     @if ($next = $upcoming->first())
                         <div class="surface-card overflow-hidden">
-                            <div class="bg-gray-900 p-6 text-center">
+                            <div class="bg-ink p-6 text-center">
                                 <p class="text-xs font-semibold text-accent">نزدیک‌ترین رویداد</p>
                                 <p class="mt-3 text-4xl font-extrabold text-white">{{ fa($next->days_until) }}</p>
-                                <p class="mt-1 text-xs text-gray-400">روز مانده</p>
+                                <p class="mt-1 text-xs text-on-ink-muted">روز مانده</p>
                             </div>
 
                             <div class="p-6">

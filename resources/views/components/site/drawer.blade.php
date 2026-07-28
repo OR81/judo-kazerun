@@ -5,7 +5,7 @@
      class="pointer-events-none fixed inset-0 z-50 lg:hidden">
 
     <div data-drawer-backdrop data-drawer-close
-         class="absolute inset-0 bg-gray-950/60 opacity-0 backdrop-blur-sm transition-opacity duration-300"></div>
+         class="absolute inset-0 bg-ink/60 opacity-0 backdrop-blur-sm transition-opacity duration-300"></div>
 
     <div data-drawer-panel role="dialog" aria-modal="true" aria-label="منوی ناوبری"
          class="absolute inset-y-0 inset-inline-end-0 flex w-[min(22rem,88vw)] translate-x-full flex-col

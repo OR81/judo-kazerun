@@ -1,17 +1,17 @@
 @props(['compact' => false])
 
 {{--
-    Wordmark. The emblem is an inline SVG so it costs no request, scales
-    crisply, and inherits the current colour in both themes.
+    Wordmark. The emblem is an inline SVG so it costs no request and stays crisp
+    at any size. Kept identical to public/favicon.svg.
 --}}
 <a href="{{ route('home') }}" {{ $attributes->merge(['class' => 'group flex items-center gap-3']) }}>
-    <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gray-900 shadow-soft transition group-hover:shadow-lift">
+    <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-ink shadow-soft transition group-hover:shadow-lift">
         <svg viewBox="0 0 32 32" class="h-6 w-6" role="img" aria-label="نشان هیئت جودو کازرون">
-            {{-- Stylised judogi lapel crossing over a rising sun. --}}
-            <circle cx="16" cy="16" r="15" fill="none" stroke="#F59E0B" stroke-width="1.5" opacity=".55" />
-            <path d="M16 4 L25 12 L16 20 L7 12 Z" fill="#DC2626" />
-            <path d="M16 12 L25 20 L16 28 L7 20 Z" fill="#F59E0B" opacity=".92" />
-            <circle cx="16" cy="16" r="2.6" fill="#fff" />
+            {{-- The mat keyline, the crossed judogi lapels, and the belt. --}}
+            <rect x="3" y="3" width="26" height="26" rx="6" fill="none" stroke="#D97706" stroke-width="1.5" opacity=".55" />
+            <path d="M10 8 L16 17 L22 8" fill="none" stroke="#fff" stroke-width="3.2"
+                  stroke-linecap="round" stroke-linejoin="round" />
+            <rect x="8" y="20.4" width="16" height="3.4" rx="1.7" fill="#D97706" />
         </svg>
     </span>
 

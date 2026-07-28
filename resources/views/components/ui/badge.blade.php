@@ -11,7 +11,7 @@
         'accent' => 'bg-accent-soft text-accent-text',
         'success' => 'bg-emerald-500/12 text-emerald-700',
         'info' => 'bg-sky-500/12 text-sky-700',
-        'dark' => 'bg-gray-900 text-white',
+        'ink' => 'bg-ink text-white',
     ];
 
     // A raw utility string may be passed instead of a named variant — the enums

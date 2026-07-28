@@ -15,7 +15,6 @@ use App\Models\Coach;
 use App\Models\User;
 use App\Support\MediaPlaceholder;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
 
 class PeopleSeeder extends Seeder
 {
@@ -61,14 +60,11 @@ class PeopleSeeder extends Seeder
             ['mobile' => '09171234567'],
             [
                 'name' => 'مدیر سامانه',
-                'email' => 'admin@judo-kazerun.ir',
-                'password' => Hash::make('password'),
                 'role' => UserRole::Admin,
                 'national_code' => '2280000001',
                 'gender' => Gender::Male,
                 'city' => 'کازرون',
                 'is_active' => true,
-                'email_verified_at' => now(),
             ],
         );
     }
@@ -180,14 +176,11 @@ class PeopleSeeder extends Seeder
                 ['mobile' => '09171112233'],
                 [
                     'name' => $head->name,
-                    'email' => 'coach@judo-kazerun.ir',
-                    'password' => Hash::make('password'),
                     'role' => UserRole::Coach,
                     'national_code' => '2280000002',
                     'gender' => Gender::Male,
                     'city' => 'کازرون',
                     'is_active' => true,
-                    'email_verified_at' => now(),
                 ],
             );
 
@@ -311,15 +304,12 @@ class PeopleSeeder extends Seeder
                 ['mobile' => '09173334455'],
                 [
                     'name' => $first->name,
-                    'email' => 'athlete@judo-kazerun.ir',
-                    'password' => Hash::make('password'),
                     'role' => UserRole::Athlete,
                     'national_code' => '2280000003',
                     'birth_date' => $first->birth_date,
                     'gender' => $first->gender,
                     'city' => 'کازرون',
                     'is_active' => true,
-                    'email_verified_at' => now(),
                 ],
             );
 

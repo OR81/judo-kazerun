@@ -10,7 +10,7 @@
     $variants = [
         'primary' => 'bg-brand text-on-brand shadow-soft hover:bg-brand-hover hover:shadow-lift',
         'accent' => 'bg-accent text-on-accent shadow-soft hover:bg-accent-hover hover:shadow-lift',
-        'dark' => 'bg-gray-900 text-white shadow-soft hover:bg-gray-800:bg-gray-700',
+        'ink' => 'bg-ink text-white shadow-soft hover:bg-ink-soft',
         'outline' => 'border border-line bg-surface text-copy hover:border-line-strong hover:bg-surface-muted',
         'ghost' => 'text-copy hover:bg-surface-muted hover:text-heading',
         'soft' => 'bg-brand-soft text-brand-text hover:bg-brand hover:text-on-brand',

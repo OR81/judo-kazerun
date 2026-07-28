@@ -18,7 +18,7 @@
         @if ($event->is_registration_open)
             <x-ui.button :href="route('register')" variant="primary" icon="fa-user-plus">ثبت‌نام در رویداد</x-ui.button>
         @else
-            <span class="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/5 px-5 py-2.5 text-sm font-semibold text-gray-300">
+            <span class="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/5 px-5 py-2.5 text-sm font-semibold text-on-ink">
                 <i class="fa-solid fa-lock text-xs" aria-hidden="true"></i>
                 مهلت ثبت‌نام به پایان رسیده
             </span>
@@ -46,7 +46,7 @@
                                    class="group relative aspect-4/3 overflow-hidden rounded-card">
                                     <img src="{{ $album->cover_url }}" alt="" loading="lazy"
                                          class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 to-transparent"></div>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-ink/80 to-transparent"></div>
                                     <span class="absolute inset-x-0 bottom-0 p-3 text-sm font-semibold text-white">
                                         {{ $album->title }}
                                     </span>

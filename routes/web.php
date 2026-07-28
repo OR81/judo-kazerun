@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 | Public site
 |--------------------------------------------------------------------------
 |
-| Registration and payment live in routes/registration.php, and the athlete
-| and coach dashboards in routes/portal.php. Fortify owns the auth routes,
-| and Filament owns /admin.
+| Sign-in lives in routes/auth.php, registration and payment in
+| routes/registration.php, and the athlete and coach dashboards in
+| routes/portal.php. Filament owns /admin.
 |
 */
 
@@ -72,5 +72,6 @@ Route::post('/newsletter', [NewsletterController::class, 'subscribe'])
 Route::get('/newsletter/{subscriber}/unsubscribe', [NewsletterController::class, 'unsubscribe'])
     ->name('newsletter.unsubscribe');
 
+require __DIR__.'/auth.php';
 require __DIR__.'/registration.php';
 require __DIR__.'/portal.php';

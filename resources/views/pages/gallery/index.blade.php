@@ -45,7 +45,7 @@
                             <img src="{{ $album->cover_url }}" alt="" loading="lazy" decoding="async"
                                  class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
 
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent"
+                            <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent"
                                  aria-hidden="true"></div>
 
                             @if ($album->type === \App\Enums\GalleryType::Video)
@@ -57,7 +57,7 @@
                             @endif
 
                             <span class="absolute top-3 inset-inline-end-3">
-                                <x-ui.badge variant="dark" :icon="$album->type->icon()">
+                                <x-ui.badge variant="ink" :icon="$album->type->icon()">
                                     {{ fa($album->items->count()) }}
                                 </x-ui.badge>
                             </span>

@@ -10,6 +10,11 @@
 @source '../views';
 @source '../../app';
 
+/* Style something only when the page is actually scripted. The counterpart of the
+   `html:not(.js)` guards below, for markup that should collapse once JS takes over
+   (the hall board's per-day headings, which the tab strip then replaces). */
+@custom-variant js (html.js &);
+
 /* The site is light-only. `dark:` is redefined rather than left alone because
    Tailwind's stock variant follows prefers-color-scheme — an accidental `dark:`
    utility would otherwise repaint half a page for visitors whose OS is dark.
@@ -433,6 +438,14 @@
 html:not(.js) .reveal {
   opacity: 1;
   transform: none;
+}
+
+/* The hall board ships all seven days so it reads as an ordinary weekly timetable
+   with JavaScript off. Once scripted, the tab strip takes over and only the
+   selected day stays in the flow — done in CSS rather than by toggling `hidden`
+   in JS so there is no flash of all seven days before the module runs. */
+html.js [data-hall-panel]:not([data-active]) {
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

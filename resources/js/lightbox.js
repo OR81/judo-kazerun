@@ -14,7 +14,7 @@ let release = null;
 function build() {
     overlay = document.createElement('div');
     overlay.className =
-        'fixed inset-0 z-[70] hidden items-center justify-center bg-gray-950/92 p-4 backdrop-blur-sm sm:p-8';
+        'fixed inset-0 z-[70] hidden items-center justify-center bg-ink/92 p-4 backdrop-blur-sm sm:p-8';
     overlay.setAttribute('role', 'dialog');
     overlay.setAttribute('aria-modal', 'true');
     overlay.setAttribute('aria-label', 'نمایشگر تصاویر');

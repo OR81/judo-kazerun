@@ -17,9 +17,6 @@ class UsersTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('email')
-                    ->label('Email address')
-                    ->searchable(),
                 TextColumn::make('role')
                     ->badge()
                     ->searchable(),
@@ -33,19 +30,11 @@ class UsersTable
                 TextColumn::make('gender')
                     ->badge()
                     ->searchable(),
-                TextColumn::make('avatar')
-                    ->searchable(),
                 TextColumn::make('city')
                     ->searchable(),
                 IconColumn::make('is_active')
                     ->boolean(),
                 TextColumn::make('last_login_at')
-                    ->dateTime()
-                    ->sortable(),
-                TextColumn::make('email_verified_at')
-                    ->dateTime()
-                    ->sortable(),
-                TextColumn::make('two_factor_confirmed_at')
                     ->dateTime()
                     ->sortable(),
                 TextColumn::make('created_at')

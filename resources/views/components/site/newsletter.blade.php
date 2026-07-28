@@ -8,7 +8,7 @@
                     </span>
                     عضویت در خبرنامهٔ هیئت
                 </h2>
-                <p class="mt-3 text-sm leading-relaxed text-gray-400">
+                <p class="mt-3 text-sm leading-relaxed text-on-ink-muted">
                     از اطلاعیهٔ ثبت‌نام کلاس‌ها، تاریخ آزمون‌های دان و برنامهٔ مسابقات پیش از همه باخبر شوید.
                 </p>
             </div>
@@ -26,7 +26,7 @@
                                autocomplete="email"
                                @error('email') aria-invalid="true" aria-describedby="newsletter-error" @enderror
                                class="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white
-                                      placeholder:text-gray-500 transition focus:border-accent focus:bg-white/10">
+                                      placeholder:text-on-ink-muted/70 transition focus:border-accent focus:bg-white/10">
                     </div>
 
                     <button type="submit"
@@ -36,10 +36,10 @@
                 </div>
 
                 @error('email')
-                    <p id="newsletter-error" class="mt-2 text-xs text-crimson-300" role="alert">{{ $message }}</p>
+                    <p id="newsletter-error" class="mt-2 text-xs text-red-300" role="alert">{{ $message }}</p>
                 @enderror
 
-                <p class="mt-2 text-xs text-gray-500">
+                <p class="mt-2 text-xs text-on-ink-muted/75">
                     نشانی شما محرمانه می‌ماند و هر زمان می‌توانید لغو عضویت کنید.
                 </p>
             </form>

@@ -17,7 +17,7 @@
         class="sticky top-0 z-50 border-b border-transparent transition-[background-color,border-color,box-shadow] duration-300
                [&.is-scrolled]:glass [&.is-scrolled]:border-line [&.is-scrolled]:shadow-soft">
     {{-- Utility strip: contact details and portal entry, desktop only. --}}
-    <div class="hidden bg-gray-900 text-gray-300 lg:block">
+    <div class="hidden bg-ink text-on-ink lg:block">
         <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-2 text-xs">
             <div class="flex items-center gap-6">
                 <a href="tel:{{ setting('phone') }}" class="flex items-center gap-2 transition hover:text-white">
@@ -113,10 +113,10 @@
 
                                     @isset ($item['feature'])
                                         <a href="{{ route($item['feature']['route']) }}"
-                                           class="mt-1 flex items-center justify-between gap-4 rounded-xl bg-gray-900 p-4 text-white transition hover:bg-gray-800:bg-gray-700">
+                                           class="mt-1 flex items-center justify-between gap-4 rounded-xl bg-ink p-4 text-white transition hover:bg-ink-soft">
                                             <span>
                                                 <span class="block text-sm font-semibold">{{ $item['feature']['title'] }}</span>
-                                                <span class="mt-1 block text-xs text-gray-300">{{ $item['feature']['description'] }}</span>
+                                                <span class="mt-1 block text-xs text-on-ink">{{ $item['feature']['description'] }}</span>
                                             </span>
                                             <span class="flex shrink-0 items-center gap-2 rounded-lg bg-accent px-3 py-2 text-xs font-bold text-on-accent">
                                                 {{ $item['feature']['cta'] }}
@@ -137,12 +137,6 @@
                         class="grid h-10 w-10 place-items-center rounded-xl text-copy transition hover:bg-surface-muted hover:text-heading"
                         aria-label="جستجو در سایت">
                     <i class="fa-solid fa-magnifying-glass text-sm" aria-hidden="true"></i>
-                </button>
-
-                <button type="button" data-theme-toggle
-                        class="grid h-10 w-10 place-items-center rounded-xl text-copy transition hover:bg-surface-muted hover:text-heading"
-                        aria-label="تغییر پوستهٔ سایت">
-                    <i data-theme-icon class="fa-solid fa-circle-half-stroke text-sm" aria-hidden="true"></i>
                 </button>
 
                 <a href="{{ route('register') }}"

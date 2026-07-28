@@ -7,7 +7,7 @@
 
     <title>@yield('title', setting('site_title', 'هیئت جودو کازرون'))</title>
     <meta name="description" content="@yield('meta_description', setting('site_description'))">
-    <meta name="theme-color" content="#111827">
+    <meta name="theme-color" content="#141f4a">
 
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="{{ setting('site_title') }}">
@@ -23,25 +23,10 @@
     <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
 
     {{--
-        Applied before first paint so the correct theme is painted on frame one
-        and there's no white flash on a dark-mode reload. Mirrors resources/js/theme.js.
-        The `js` class also lets .reveal hide itself only when JS is actually present.
+        Marks the document as scripted before first paint, so .reveal only hides
+        itself when JS is actually there to bring it back.
     --}}
-    <script>
-        (function () {
-            var root = document.documentElement;
-            root.classList.add('js');
-            try {
-                var stored = localStorage.getItem('judo-theme');
-                var dark = stored === 'dark' ||
-                    (stored !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
-                root.classList.toggle('dark', dark);
-                root.style.colorScheme = dark ? 'dark' : 'light';
-            } catch (e) {
-                /* private mode — fall back to the light theme */
-            }
-        })();
-    </script>
+    <script>document.documentElement.classList.add('js');</script>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('head')
@@ -66,9 +51,6 @@
     <x-site.search-overlay />
     <x-site.back-to-top />
     <x-site.whatsapp />
-
-    {{-- Live region for theme changes and other status announcements. --}}
-    <p id="theme-status" class="sr-only" role="status" aria-live="polite"></p>
 
     {{-- Server-side flash messages, picked up by toast.js on load. --}}
     @foreach (['success' => 'success', 'error' => 'error', 'warning' => 'warning', 'status' => 'info'] as $key => $type)

@@ -48,7 +48,7 @@ final class MediaPlaceholder
     public static function logo(string $name): string
     {
         return sprintf(
-            'https://ui-avatars.com/api/?name=%s&size=256&background=111827&color=F59E0B&bold=true&format=png',
+            'https://ui-avatars.com/api/?name=%s&size=256&background=141F4A&color=D97706&bold=true&format=png',
             urlencode(mb_substr($name, 0, 2)),
         );
     }

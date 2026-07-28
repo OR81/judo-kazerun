@@ -6,7 +6,7 @@
 ])
 
 {{-- Shared masthead for every inner page, so the site reads as one system. --}}
-<section class="relative overflow-hidden border-b border-line bg-gray-900">
+<section class="relative overflow-hidden border-b border-line bg-ink">
     {{-- Tatami-inspired grid, kept faint so it never competes with the heading. --}}
     <div class="pointer-events-none absolute inset-0 opacity-[0.07]" aria-hidden="true"
          style="background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:56px 56px"></div>
@@ -16,7 +16,7 @@
 
     <div class="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:py-16">
         @if (! empty($breadcrumbs))
-            <div class="[&_a]:text-gray-400 [&_a:hover]:text-accent [&_ol]:text-gray-400 [&_span]:text-gray-200">
+            <div class="[&_a]:text-on-ink-muted [&_a:hover]:text-accent [&_ol]:text-on-ink-muted [&_span]:text-on-ink">
                 <x-ui.breadcrumbs :items="$breadcrumbs" />
             </div>
         @endif
@@ -34,7 +34,7 @@
             </h1>
 
             @if ($description)
-                <p class="mt-4 max-w-2xl leading-relaxed text-gray-300">{{ $description }}</p>
+                <p class="mt-4 max-w-2xl leading-relaxed text-on-ink">{{ $description }}</p>
             @endif
 
             @if (trim($slot) !== '')

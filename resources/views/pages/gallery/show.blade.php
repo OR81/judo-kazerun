@@ -15,13 +15,13 @@
             ['label' => $album->title],
         ]">
 
-        <span class="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/5 px-5 py-2.5 text-sm font-semibold text-gray-200">
+        <span class="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/5 px-5 py-2.5 text-sm font-semibold text-on-ink">
             <i class="fa-solid {{ $album->type->icon() }} text-xs" aria-hidden="true"></i>
             {{ fa($album->items->count()) }} {{ $album->type->label() }}
         </span>
 
         @if ($album->taken_on)
-            <span class="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/5 px-5 py-2.5 text-sm font-semibold text-gray-200">
+            <span class="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/5 px-5 py-2.5 text-sm font-semibold text-on-ink">
                 <i class="fa-solid fa-calendar text-xs" aria-hidden="true"></i>
                 {{ shamsi($album->taken_on) }}
             </span>
@@ -54,7 +54,7 @@
                          style="aspect-ratio: {{ $item->aspect_ratio }}"
                          class="w-full bg-surface-muted object-cover transition duration-500 group-hover:scale-105">
 
-                    <span class="absolute inset-0 bg-gray-950/0 transition group-hover:bg-gray-950/35" aria-hidden="true"></span>
+                    <span class="absolute inset-0 bg-ink/0 transition group-hover:bg-ink/35" aria-hidden="true"></span>
 
                     <span class="absolute inset-0 grid place-items-center opacity-0 transition group-hover:opacity-100"
                           aria-hidden="true">
@@ -77,7 +77,7 @@
                            data-reveal-delay="{{ $loop->index * 90 }}">
                             <img src="{{ $other->cover_url }}" alt="" loading="lazy"
                                  class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
-                            <div class="absolute inset-0 bg-gradient-to-t from-gray-950/85 to-transparent"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-ink/85 to-transparent"></div>
                             <span class="absolute inset-x-0 bottom-0 p-4 font-semibold text-white">{{ $other->title }}</span>
                         </a>
                     @endforeach

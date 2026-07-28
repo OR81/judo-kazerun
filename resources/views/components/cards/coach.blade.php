@@ -6,10 +6,10 @@
              class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
 
         {{-- Scrim keeps the name legible over any photo. --}}
-        <div class="absolute inset-0 bg-gradient-to-t from-gray-950/85 via-gray-950/25 to-transparent" aria-hidden="true"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-transparent" aria-hidden="true"></div>
 
         <div class="absolute top-3 inset-inline-end-3">
-            <x-ui.badge variant="dark" icon="fa-award">{{ $coach->dan_label }}</x-ui.badge>
+            <x-ui.badge variant="ink" icon="fa-award">{{ $coach->dan_label }}</x-ui.badge>
         </div>
 
         <div class="absolute inset-x-0 bottom-0 p-5">
@@ -18,7 +18,7 @@
                     {{ $coach->name }}
                 </a>
             </h3>
-            <p class="mt-1 text-sm text-gray-300">{{ $coach->title }}</p>
+            <p class="mt-1 text-sm text-on-ink">{{ $coach->title }}</p>
         </div>
     </div>
 

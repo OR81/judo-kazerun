@@ -25,6 +25,10 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
  * Access is limited to UserRole::Admin by User::canAccessPanel(). Athletes and
  * coaches get Blade dashboards that match the public design system instead.
  *
+ * Sign-in is not Filament's: the panel has no login page, so an administrator
+ * authenticates at /login with a mobile number and a texted code exactly like a
+ * member, and there is no second credential path into the admin.
+ *
  * This is the only place Livewire and Alpine load — the public bundle stays
  * dependency-free vanilla JS.
  */
@@ -36,7 +40,9 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login()
+            // No panel login page: administrators sign in at /login with the same
+            // mobile-and-code flow as everyone else, and unauthenticated requests
+            // here are redirected there by the framework's auth exception.
             ->brandName('هیئت جودو کازرون')
             ->brandLogo(asset('favicon.svg'))
             ->brandLogoHeight('2rem')
@@ -48,16 +54,17 @@ class AdminPanelProvider extends PanelProvider
             // and APP_LOCALE is fa.
             ->font('Vazirmatn', url: asset('css/vazirmatn.css'), provider: null)
             ->colors([
-                'primary' => Color::hex('#DC2626'),
-                'danger' => Color::hex('#DC2626'),
-                'warning' => Color::hex('#F59E0B'),
-                'gray' => Color::Slate,
+                'primary' => Color::hex('#1D4ED8'),
+                'danger' => Color::Red,
+                'warning' => Color::hex('#D97706'),
+                'gray' => Color::Stone,
                 'success' => Color::Emerald,
                 'info' => Color::Sky,
             ])
             ->maxContentWidth(Width::Full)
             ->sidebarCollapsibleOnDesktop()
             ->navigationGroups([
+                NavigationGroup::make('خانهٔ جودو')->icon('heroicon-o-home-modern'),
                 NavigationGroup::make('محتوا')->icon('heroicon-o-newspaper'),
                 NavigationGroup::make('آموزش و ثبت‌نام')->icon('heroicon-o-academic-cap'),
                 NavigationGroup::make('افراد')->icon('heroicon-o-users'),

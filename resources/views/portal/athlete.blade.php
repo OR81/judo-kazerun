@@ -224,8 +224,8 @@
                     @foreach (array_filter([
                         'موبایل' => fa($user->mobile),
                         'کد ملی' => $user->national_code ? fa($user->national_code) : null,
-                        'رایانامه' => $user->email,
                         'شهر' => $user->city,
+                        'آخرین ورود' => $user->last_login_at ? shamsi($user->last_login_at, 'datetime') : null,
                     ]) as $label => $value)
                         <div class="flex items-center justify-between gap-3">
                             <dt class="text-muted">{{ $label }}</dt>

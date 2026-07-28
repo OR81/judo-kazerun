@@ -2,9 +2,9 @@
 
 <article {{ $attributes->merge(['class' => 'reveal group surface-card relative flex gap-4 p-4 transition hover:shadow-lift sm:gap-5 sm:p-5']) }}>
     {{-- Date block, Shamsi. --}}
-    <div class="flex h-20 w-16 shrink-0 flex-col items-center justify-center rounded-xl bg-gray-900 text-white">
+    <div class="flex h-20 w-16 shrink-0 flex-col items-center justify-center rounded-xl bg-ink text-white">
         <span class="text-2xl leading-none font-extrabold">{{ shamsi($event->starts_at, 'day') }}</span>
-        <span class="mt-1 text-[0.7rem] text-gray-300">{{ shamsi($event->starts_at, 'month') }}</span>
+        <span class="mt-1 text-[0.7rem] text-on-ink">{{ shamsi($event->starts_at, 'month') }}</span>
     </div>
 
     <div class="min-w-0 flex-1">

@@ -1,4 +1,3 @@
-import { initTheme } from './theme';
 import { initNav } from './nav';
 import { initReveal } from './reveal';
 import { initBackToTop } from './back-to-top';
@@ -14,11 +13,14 @@ import { initToast } from './toast';
  * the page they're actually on needs.
  */
 function boot() {
-    initTheme();
     initNav();
     initReveal();
     initBackToTop();
     initToast();
+
+    if (document.querySelector('[data-hall]')) {
+        import('./hall').then((m) => m.initHall());
+    }
 
     if (document.querySelector('[data-slider]')) {
         import('./slider').then((m) => m.initSlider());

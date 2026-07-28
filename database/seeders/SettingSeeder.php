@@ -43,6 +43,28 @@ class SettingSeeder extends Seeder
                 'hours_note' => 'ساعات کار دفتر هیئت. زمان تمرین کلاس‌ها در صفحهٔ برنامهٔ تمرینی اعلام شده است.',
             ],
 
+            /*
+             * خانهٔ جودو — the building itself.
+             *
+             * Times are stored as plain H:i so the home page can decide, on the
+             * server, whether the hall is open right now; the office hours above
+             * are separate and describe the desk, not the mat.
+             */
+            'hall' => [
+                'hall_name' => 'خانهٔ جودو کازرون',
+                'hall_intro' => 'خانهٔ جودو کازرون سالن اختصاصی هیئت است: دو سالن تاتامی، رختکن و دوش، '
+                    .'و برنامه‌ای که از هشت صبح تا یازده شب روی مات ادامه دارد. کلاس‌های هیئت اینجا برگزار '
+                    .'می‌شود و سانس‌های خالی به باشگاه‌ها، مدارس و گروه‌های ورزشی اجاره داده می‌شود.',
+                'hall_open_from' => '08:00',
+                'hall_open_to' => '23:00',
+                'hall_friday_open_from' => '08:00',
+                'hall_friday_open_to' => '13:00',
+                'hall_rent_note' => 'اجارهٔ سانس با هماهنگی دفتر هیئت و عقد قرارداد کوتاه‌مدت انجام می‌شود. '
+                    .'برای رزرو ثابت هفتگی، تخفیف دوره‌ای در نظر گرفته شده است.',
+                'hall_monthly_discount' => '۱۵',
+                'hall_min_booking' => '۴',
+            ],
+
             'social' => [
                 'instagram' => 'https://instagram.com/judo.kazerun',
                 'telegram' => 'https://t.me/judo_kazerun',

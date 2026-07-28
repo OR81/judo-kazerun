@@ -1,4 +1,4 @@
-<footer class="mt-24 border-t border-line bg-gray-900 text-gray-300">
+<footer class="mt-24 border-t border-line bg-ink text-on-ink">
     <x-site.newsletter />
 
     <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6">
@@ -16,11 +16,11 @@
                     </span>
                     <span>
                         <span class="block font-extrabold text-white">هیئت جودو کازرون</span>
-                        <span class="mt-0.5 block text-xs text-gray-400">{{ setting('site_tagline') }}</span>
+                        <span class="mt-0.5 block text-xs text-on-ink-muted">{{ setting('site_tagline') }}</span>
                     </span>
                 </a>
 
-                <p class="mt-5 text-sm leading-relaxed text-gray-400">
+                <p class="mt-5 text-sm leading-relaxed text-on-ink-muted">
                     {{ setting('about_short') }}
                 </p>
 
@@ -55,7 +55,7 @@
                             ['ورزشکاران', 'athletes.index'],
                         ] as [$label, $route])
                             <li>
-                                <a href="{{ route($route) }}" class="text-gray-400 transition hover:text-accent">{{ $label }}</a>
+                                <a href="{{ route($route) }}" class="text-on-ink-muted transition hover:text-accent">{{ $label }}</a>
                             </li>
                         @endforeach
                     </ul>
@@ -71,7 +71,7 @@
                             ['گالری', 'gallery'],
                         ] as [$label, $route])
                             <li>
-                                <a href="{{ route($route) }}" class="text-gray-400 transition hover:text-accent">{{ $label }}</a>
+                                <a href="{{ route($route) }}" class="text-on-ink-muted transition hover:text-accent">{{ $label }}</a>
                             </li>
                         @endforeach
                     </ul>
@@ -86,7 +86,7 @@
                             ['ورود به پرتال', 'login'],
                         ] as [$label, $route])
                             <li>
-                                <a href="{{ route($route) }}" class="text-gray-400 transition hover:text-accent">{{ $label }}</a>
+                                <a href="{{ route($route) }}" class="text-on-ink-muted transition hover:text-accent">{{ $label }}</a>
                             </li>
                         @endforeach
                     </ul>
@@ -96,7 +96,7 @@
             {{-- Contact --}}
             <div class="lg:col-span-3">
                 <h2 class="text-sm font-bold text-white">اطلاعات تماس</h2>
-                <ul class="mt-4 space-y-4 text-sm text-gray-400">
+                <ul class="mt-4 space-y-4 text-sm text-on-ink-muted">
                     <li class="flex gap-3">
                         <i class="fa-solid fa-location-dot mt-1 shrink-0 text-accent" aria-hidden="true"></i>
                         <span class="leading-relaxed">{{ setting('address') }}</span>
@@ -124,17 +124,17 @@
             </div>
         </div>
 
-        <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs text-gray-500 sm:flex-row">
+        <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs text-on-ink-muted/75 sm:flex-row">
             <p>
                 © {{ shamsi(now(), 'year') }} — کلیهٔ حقوق برای
-                <span class="text-gray-400">هیئت جودو شهرستان کازرون</span>
+                <span class="text-on-ink-muted">هیئت جودو شهرستان کازرون</span>
                 محفوظ است.
             </p>
             <p class="flex items-center gap-2">
                 <span>زیر نظر</span>
-                <span class="text-gray-400">{{ setting('province_board') }}</span>
+                <span class="text-on-ink-muted">{{ setting('province_board') }}</span>
                 <span aria-hidden="true">·</span>
-                <span class="text-gray-400">{{ setting('federation') }}</span>
+                <span class="text-on-ink-muted">{{ setting('federation') }}</span>
             </p>
         </div>
     </div>

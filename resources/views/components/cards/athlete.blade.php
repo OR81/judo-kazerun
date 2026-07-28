@@ -3,7 +3,7 @@
 @php $medals = $athlete->medal_counts; @endphp
 
 <article {{ $attributes->merge(['class' => 'reveal group surface-card relative overflow-hidden text-center transition hover:shadow-lift']) }}>
-    <div class="relative bg-gradient-to-b from-gray-900 to-gray-800 pt-8 pb-6">
+    <div class="relative bg-gradient-to-b from-ink to-ink-soft pt-8 pb-6">
         @if ($athlete->is_national_team)
             <span class="absolute top-3 inset-inline-start-3">
                 <x-ui.badge variant="accent" icon="fa-flag">ملی‌پوش</x-ui.badge>
@@ -18,7 +18,7 @@
             </a>
         </h3>
 
-        <p class="mt-1 text-sm text-gray-300">{{ $athlete->weight_class }}</p>
+        <p class="mt-1 text-sm text-on-ink">{{ $athlete->weight_class }}</p>
     </div>
 
     <div class="p-5">

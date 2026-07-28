@@ -23,7 +23,7 @@
 
     $control = 'w-full rounded-xl border bg-surface px-4 py-3 text-sm text-heading transition
                 placeholder:text-muted focus:border-brand
-                '.($hasError ? 'border-crimson-600' : 'border-line');
+                '.($hasError ? 'border-danger' : 'border-line');
 @endphp
 
 <div data-field {{ $attributes->merge(['class' => 'space-y-2']) }}>
@@ -76,7 +76,7 @@
 
     {{-- Always present so client-side validation has somewhere to write. --}}
     <p id="{{ $errorId }}" data-field-error role="alert"
-       class="text-xs font-medium text-brand-text" @unless ($hasError) hidden @endunless>
+       class="text-xs font-medium text-danger-text" @unless ($hasError) hidden @endunless>
         {{ $errors->first($name) }}
     </p>
 </div>

@@ -54,6 +54,12 @@ final class PersianNumber
      */
     public static function weekday(int $index): string
     {
-        return ['شنبه', 'یک‌شنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه'][$index % 7];
+        return self::weekdays()[$index % 7];
+    }
+
+    /** [0 => 'شنبه', … 6 => 'جمعه'] — ready for a <select> or a Filament field. */
+    public static function weekdays(): array
+    {
+        return ['شنبه', 'یک‌شنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه'];
     }
 }
