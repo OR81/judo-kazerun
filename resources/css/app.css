@@ -312,13 +312,15 @@
 
 /* Drawer panel slide state.
    The mobile drawer is docked to the trailing edge of the viewport (the right in
-   LTR, the left in RTL, via inset-inline-end-0). When closed it must slide fully
-   off-screen on that trailing edge — which is a *direction-aware* translation, so
-   a single Tailwind `translate-x-*` utility can't express it. We drive it from the
-   document's inline base direction instead, which keeps JS to a plain class swap. */
+   LTR, the left in RTL) and, when closed, must slide fully off-screen on that
+   same edge. Both the dock and the slide are *direction-aware*, so neither can be
+   a plain Tailwind utility: `inset-inline-end-0` is not emitted by v4 at all, and
+   a single `translate-x-*` would always slide one way. Folding both into one
+   utility keeps JS to a plain class swap and keeps the dock and the slide in
+   lockstep across `dir`. */
 @utility drawer-closed {
-  &:where([dir='ltr'], [dir='ltr'] *) { translate: 100% 0; }
-  &:where([dir='rtl'], [dir='rtl'] *) { translate: -100% 0; }
+  &:where([dir='ltr'], [dir='ltr'] *) { inset-inline-end: 0; translate: 100% 0; }
+  &:where([dir='rtl'], [dir='rtl'] *) { inset-inline-end: 0; translate: -100% 0; }
 }
 
 /* The woven grain of a tatami, drawn with two crossed gradients so it costs no
