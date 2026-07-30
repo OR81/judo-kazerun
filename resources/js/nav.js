@@ -128,7 +128,7 @@ function initDrawer() {
         drawer.classList.remove('pointer-events-none');
         drawer.removeAttribute('inert');
         drawer.querySelector('[data-drawer-backdrop]')?.classList.remove('opacity-0');
-        panel?.classList.remove('translate-x-full');
+        panel?.classList.remove('drawer-closed');
 
         openButton.setAttribute('aria-expanded', 'true');
         lockScroll();
@@ -138,7 +138,7 @@ function initDrawer() {
     function close() {
         drawer.classList.add('pointer-events-none');
         drawer.querySelector('[data-drawer-backdrop]')?.classList.add('opacity-0');
-        panel?.classList.add('translate-x-full');
+        panel?.classList.add('drawer-closed');
 
         openButton.setAttribute('aria-expanded', 'false');
         unlockScroll();

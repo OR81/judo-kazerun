@@ -310,6 +310,17 @@
   box-shadow: var(--shadow-soft);
 }
 
+/* Drawer panel slide state.
+   The mobile drawer is docked to the trailing edge of the viewport (the right in
+   LTR, the left in RTL, via inset-inline-end-0). When closed it must slide fully
+   off-screen on that trailing edge — which is a *direction-aware* translation, so
+   a single Tailwind `translate-x-*` utility can't express it. We drive it from the
+   document's inline base direction instead, which keeps JS to a plain class swap. */
+@utility drawer-closed {
+  &:where([dir='ltr'], [dir='ltr'] *) { translate: 100% 0; }
+  &:where([dir='rtl'], [dir='rtl'] *) { translate: -100% 0; }
+}
+
 /* The woven grain of a tatami, drawn with two crossed gradients so it costs no
    request. Meant for an aria-hidden overlay: it paints in `currentColor`, so the
    element carries the colour and the opacity, never the content above it. */
