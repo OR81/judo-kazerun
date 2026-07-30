@@ -8,7 +8,7 @@
          class="absolute inset-0 bg-ink/60 opacity-0 backdrop-blur-sm transition-opacity duration-300"></div>
 
     <div data-drawer-panel role="dialog" aria-modal="true" aria-label="منوی ناوبری"
-         class="absolute inset-y-0 flex w-[min(22rem,88vw)] flex-col
+         class="absolute inset-y-0 flex w-[min(22rem,88vw)] flex-col left-0
                 bg-surface shadow-pop transition-transform duration-300 drawer-closed">
 
         <div class="flex items-center justify-between gap-3 border-b border-line p-4">
